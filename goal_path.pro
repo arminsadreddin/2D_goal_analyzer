@@ -28,11 +28,13 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    load_image.cpp
+    load_image.cpp \
+    input.cpp
 
 HEADERS += \
         mainwindow.h \
-    load_image.h
+    load_image.h \
+    input.h
 
 FORMS += \
         mainwindow.ui
