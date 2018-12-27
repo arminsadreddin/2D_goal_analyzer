@@ -29,12 +29,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     load_image.cpp \
-    input.cpp
+    input.cpp \
+    draw_path.cpp
 
 HEADERS += \
         mainwindow.h \
     load_image.h \
-    input.h
+    input.h \
+    draw_path.h
 
 FORMS += \
         mainwindow.ui

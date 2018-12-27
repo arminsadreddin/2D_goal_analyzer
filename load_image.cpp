@@ -1,5 +1,7 @@
 #include "load_image.h"
 #include <QLabel>
+#include <QPainter>
+#include <qpicture.h>
 load_image::load_image()
 {
 
