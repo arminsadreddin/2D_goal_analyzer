@@ -27,10 +27,12 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    load_image.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    load_image.h
 
 FORMS += \
         mainwindow.ui
