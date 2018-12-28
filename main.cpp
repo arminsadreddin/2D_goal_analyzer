@@ -3,7 +3,6 @@
 #include <QLabel>
 #include <qpainter.h>
 #include <qpicture.h>
-#include <draw_path.h>
 #include <input.h>
 using namespace std;
 pair<int , int> convert_2D_geom(pair<double , double> input , int img_x , int img_y);
@@ -25,7 +24,7 @@ int main(int argc, char *argv[])
     QPainter p(&px);
 
 
-
+    //draw data
     for(int a = 0 ; a < in.all_paths.size() ; a++){
         vector<pair<double , double> > path = in.all_paths.at(a);
         for(int pa = 0 ; pa < path.size()-1 ; pa++){
