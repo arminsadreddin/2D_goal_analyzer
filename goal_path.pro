@@ -28,14 +28,11 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    input.cpp \
-    draw_path.cpp
+    input.cpp
 
 HEADERS += \
         mainwindow.h \
-    load_image.h \
-    input.h \
-    draw_path.h
+    input.h
 
 FORMS += \
         mainwindow.ui
