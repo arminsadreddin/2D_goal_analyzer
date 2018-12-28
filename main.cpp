@@ -7,8 +7,12 @@
 #include <random>
 #include <fstream>
 using namespace std;
+
+double filter_out[105][68];
+
 pair<int , int> convert_2D_geom(pair<double , double> input , int img_x , int img_y);
 void make_output(double value_map[105][68]);
+void blur_map (double value_map[105][68]);
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -67,7 +71,7 @@ int main(int argc, char *argv[])
             }
 
 
-            value_map[(int)point_2D.first][(int)point_2D.second] += 0.1;
+            value_map[(int)point_2D.first][(int)point_2D.second] += 0.02;
 
             pair<int , int> first = convert_2D_geom(path.at(pa) , px.width(), px.height());
             pair<int , int> second = convert_2D_geom(path.at(pa+1) , px.width(), px.height());
@@ -101,7 +105,7 @@ int main(int argc, char *argv[])
             point_2D.second = 0;
         }
 
-        value_map[(int)point_2D.first][(int)point_2D.second] += 0.1;
+        value_map[(int)point_2D.first][(int)point_2D.second] += 0.02;
 
     }
 
@@ -116,6 +120,17 @@ int main(int argc, char *argv[])
 
     double rect_x_lenght = value_field.width() / 105.0;
     double rect_y_lenght = value_field.height() / 68.0;
+
+    blur_map(value_map);
+
+
+    for(int x = 0 ; x < 105 ; x++){
+        for(int y = 0 ; y < 68 ; y++){
+            value_map[x][y] = filter_out[x][y];
+        }
+    }
+
+
 
     for(int x = 0 ; x < 105 ; x++){
 
@@ -148,7 +163,7 @@ int main(int argc, char *argv[])
     value_label.setGeometry(QRect(0, 0, px.width(), px.height()));
     value_label.show();
 
-    make_output(value_map);
+    //make_output(value_map);
 
     return a.exec();
 }
@@ -197,7 +212,39 @@ void make_output(double value_map[105][68]){
     }
 }
 
+void blur_map (double value_map[105][68]){
 
+    for(int x = 0 ; x < 105 ; x++){
+        for(int y = 0 ; y < 68 ; y++){
+            filter_out[x][y] = value_map[x][y];
+            if(x!=0){
+                filter_out[x][y] += value_map[x-1][y];
+                if(y != 0){
+                    filter_out[x][y] += value_map[x-1][y-1];
+                }
+                if(y != 67){
+                    filter_out[x][y] += value_map[x-1][y+1];
+                }
+            }
+            if(y!=0){
+                filter_out[x][y] += value_map[x][y-1];
+            }
+            if(x!=104){
+                filter_out[x][y] += value_map[x+1][y];
+                if(y != 0){
+                    filter_out[x][y] += value_map[x-1][y-1];
+                }
+                if(y != 67){
+                    filter_out[x][y] += value_map[x-1][y+1];
+                }
+            }
+            if(y!=67){
+                filter_out[x][y] += value_map[x][y+1];
+            }
+        }
+    }
+
+}
 
 
 
