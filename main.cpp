@@ -5,8 +5,10 @@
 #include <qpicture.h>
 #include <input.h>
 #include <random>
+#include <fstream>
 using namespace std;
 pair<int , int> convert_2D_geom(pair<double , double> input , int img_x , int img_y);
+void make_output(double value_map[105][68]);
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -146,7 +148,7 @@ int main(int argc, char *argv[])
     value_label.setGeometry(QRect(0, 0, px.width(), px.height()));
     value_label.show();
 
-
+    make_output(value_map);
 
     return a.exec();
 }
@@ -176,6 +178,32 @@ pair<int , int> convert_2D_geom(pair<double , double> input , int img_x , int im
     return out_put;
 
 }
+
+
+void make_output(double value_map[105][68]){
+    std::ofstream outfile;
+    outfile.open("/home/arminsadreddin/goal_path/out.txt", std::ios_base::app);
+    for(int x = 0 ; x < 105 ; x++){
+        outfile << "{";
+        for(int y = 0 ; y < 68 ; y++){
+
+            outfile << value_map[x][y];
+            if(y != 67){
+                outfile<<",";
+            }
+
+        }
+        outfile << "},"<<endl;
+    }
+}
+
+
+
+
+
+
+
+
 
 
 
