@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
-
+#include <math.h>
 using namespace std;
 input::input()
 {
@@ -16,6 +16,9 @@ void input::load_data(string path){
     ifstream myfile (path.c_str());
     if (myfile.is_open())
     {
+        pair<double , double> last_pos;
+        last_pos.first = -1000;
+        last_pos.second = -1000;
         while ( getline (myfile,line) )
         {
             pair<double , double> pos;
@@ -37,7 +40,12 @@ void input::load_data(string path){
             pos.first = x_num;
             pos.second = y_num;
 
-            single_path.push_back(pos);
+            if(dist(last_pos , pos) > 4){
+                single_path.push_back(pos);
+                last_pos = pos;
+            }
+
+
 
         }
         myfile.close();
@@ -48,3 +56,26 @@ void input::load_data(string path){
     //cout << all_paths.size() << endl;
 
 }
+
+
+double input::dist(pair<double, double> point1, pair<double, double> point2){
+
+    double d =sqrt( pow(point1.first - point2.first , 2) + pow(point1.second - point2.second , 2) );
+    return d;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -34,6 +34,11 @@ int main(int argc, char *argv[])
         int g = rand() % 255;
         int b = rand() % 255;
         QColor pen_color(r,g,b);
+        QPen line_pen(pen_color);
+        line_pen.setWidth(1);
+
+        QPen point_pen(pen_color);
+        point_pen.setWidth(4);
 
         for(int pa = 0 ; pa < path.size()-1 ; pa++){
 
@@ -41,25 +46,15 @@ int main(int argc, char *argv[])
             pair<int , int> first = convert_2D_geom(path.at(pa) , px.width(), px.height());
             pair<int , int> second = convert_2D_geom(path.at(pa+1) , px.width(), px.height());
 
-            if(first.first < 0.0){
-                cout << "wrong"<<endl;
-            }
-            if(first.second < 0.0){
-                cout << "wrong"<<endl;
-            }
-            if(second.first < 0.0){
-                cout << "wrong"<<endl;
-            }
-            if(second.second < 0.0){
-                cout << "wrong"<<endl;
-            }
 
             QPoint p1(first.first , first.second);
             QPoint p2(second.first , second.second);
 
-
-            p.setPen(pen_color);
+            p.setPen(line_pen);
             p.drawLine(p1,p2);
+            p.setPen(point_pen);
+            p.drawPoint(p1);
+            p.drawPoint(p2);
 
         }
 

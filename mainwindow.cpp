@@ -1,9 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QLabel>
-#include "load_image.h"
 #include "input.h"
-#include "draw_path.h"
 #include <qpainter.h>
 #include <qpicture.h>
 MainWindow::MainWindow(QWidget *parent) :
