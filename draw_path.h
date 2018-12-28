@@ -11,6 +11,8 @@ class draw_path
 public:
     draw_path();
     void draw_goal_paths(MainWindow * w , vector<vector<pair<double , double> > > all_paths);
+//protected:
+//    void paintEvent(QPaintEvent *e);
 };
 
 #endif // DRAW_PATH_H

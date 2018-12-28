@@ -11,22 +11,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
 
-    load_image img;
-    string image_path = "/home/arminsadreddin/goal_path/field";
-    img.load_field(this , image_path);
 
 
 
 
-    input in;
-    in.load_data("/home/arminsadreddin/goal_path/ourGoalPath.txt");
+//    load_image img;
+//    string image_path = "/home/arminsadreddin/goal_path/field";
+//    img.load_field(this , image_path);
 
+//    input in;
+//    in.load_data("/home/arminsadreddin/goal_path/ourGoalPath.txt");
+//    paths = in.all_paths;
 
-
-    //TODO filter if needed should be add
-
-    draw_path path_draw;
-    //path_draw.draw_goal_paths(this , in.all_paths);
 
 
 
@@ -46,4 +42,29 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::paintEvent(QPaintEvent *e){
+
+
+
+
+//    QPainter painter(this);
+//    draw_path path_draw;
+//    path_draw.draw_goal_paths(this , paths,e);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

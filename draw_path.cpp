@@ -1,5 +1,6 @@
 #include "draw_path.h"
 #include <iostream>
+
 using namespace std;
 
 
@@ -19,13 +20,34 @@ void draw_path::draw_goal_paths(MainWindow * w , vector<vector<pair<double, doub
 
 
 
+    QPainter painter(w);
+    QPen paintPen(Qt::black);
+    paintPen.setWidth(6);
+
+
+    QPen linePen(Qt::red);
+    linePen.setWidth(2);
+
+    QPoint p1;
+    p1.setX(10);
+    p1.setY(10);
+
+
+    QPoint p2;
+    p2.setX(100);
+    p2.setY(100);
 
 
 
 
 
 
+    painter.setPen(linePen);
+    painter.drawLine(p1,p2);
 
+    painter.setPen(paintPen);
+    painter.drawPoint(p1);
+    painter.drawPoint(p2);
 
 
 
@@ -41,3 +63,9 @@ void draw_path::draw_goal_paths(MainWindow * w , vector<vector<pair<double, doub
 
 
 }
+//void draw_path::paintEvent(QPaintEvent *e){
+
+//    QPainter painter(w);
+//    painter.drawLine(10,10,100,100);
+
+//}

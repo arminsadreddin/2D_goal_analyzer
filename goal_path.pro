@@ -28,7 +28,6 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    load_image.cpp \
     input.cpp \
     draw_path.cpp
 
