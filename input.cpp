@@ -19,11 +19,18 @@ void input::load_data(string path){
         pair<double , double> last_pos;
         last_pos.first = -1000;
         last_pos.second = -1000;
+        pair<double , double> shoot_pos;
+        bool added = false;
         while ( getline (myfile,line) )
         {
             pair<double , double> pos;
             if(line == "---------"){
+
+
                 if(single_path.size() != 0){
+                    if(added == false){
+                        single_path.push_back(shoot_pos);
+                    }
                     all_paths.push_back(single_path);
                 }
                 single_path.clear();
@@ -40,11 +47,15 @@ void input::load_data(string path){
             pos.first = x_num;
             pos.second = y_num;
 
-            if(dist(last_pos , pos) > 4){
+            if(dist(last_pos , pos) > 5){
                 single_path.push_back(pos);
                 last_pos = pos;
+                added = true;
             }
-
+            else{
+                added = false;
+            }
+            shoot_pos = pos;
 
 
         }
