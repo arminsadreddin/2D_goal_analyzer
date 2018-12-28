@@ -42,7 +42,7 @@ void input::load_data(string path){
             string y = line.substr(delimiter + 2 , line.size());
 
             double x_num = atof(x.c_str());
-            double y_num = atof(y.c_str());
+            double y_num = -atof(y.c_str());
 
             pos.first = x_num;
             pos.second = y_num;
