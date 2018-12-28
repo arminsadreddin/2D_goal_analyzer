@@ -4,6 +4,7 @@
 #include <qpainter.h>
 #include <qpicture.h>
 #include <input.h>
+#include <random>
 using namespace std;
 pair<int , int> convert_2D_geom(pair<double , double> input , int img_x , int img_y);
 int main(int argc, char *argv[])
@@ -27,6 +28,13 @@ int main(int argc, char *argv[])
     //draw data
     for(int a = 0 ; a < in.all_paths.size() ; a++){
         vector<pair<double , double> > path = in.all_paths.at(a);
+
+
+        int r = rand() % 255;
+        int g = rand() % 255;
+        int b = rand() % 255;
+        QColor pen_color(r,g,b);
+
         for(int pa = 0 ; pa < path.size()-1 ; pa++){
 
 
@@ -50,9 +58,7 @@ int main(int argc, char *argv[])
             QPoint p2(second.first , second.second);
 
 
-
-
-            p.setPen(Qt::red);
+            p.setPen(pen_color);
             p.drawLine(p1,p2);
 
         }
